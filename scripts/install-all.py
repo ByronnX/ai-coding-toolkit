@@ -48,21 +48,30 @@ def find_leaf_skills(root: Path) -> list[Path]:
 
 
 def sync_skills(toolkit_root: Path, agents: list[str], dry_run: bool) -> None:
+    # Order matters: core skills take precedence over external auto-synced skills.
+    # External skills that conflict with core are skipped.
     skill_sources = [
-        toolkit_root / "skills" / "core",
-        toolkit_root / "skills" / "external",
+        (toolkit_root / "skills" / "core", "core"),
+        (toolkit_root / "skills" / "external", "external"),
     ]
 
     for agent in agents:
         dest = AGENT_DIRS[agent]
         ensure_dir(dest)
+        installed: set[str] = set()
 
-        for source in skill_sources:
+        for source, source_name in skill_sources:
             for skill_dir in find_leaf_skills(source):
-                # Use parent.name-category if there might be conflicts? Keep simple for now.
-                target = dest / skill_dir.name
+                name = skill_dir.name
+                target = dest / name
+
+                if name in installed:
+                    print(f"Skipped {source_name}/{name}: conflicts with already-installed skill")
+                    continue
+
                 if dry_run:
-                    print(f"[dry-run] would sync {skill_dir.name} -> {target}")
+                    print(f"[dry-run] would sync {name} -> {target}")
+                    installed.add(name)
                     continue
 
                 if target.exists():
@@ -71,7 +80,8 @@ def sync_skills(toolkit_root: Path, agents: list[str], dry_run: bool) -> None:
                     else:
                         shutil.rmtree(target)
                 shutil.copytree(skill_dir, target)
-                print(f"Synced {agent}: {skill_dir.name}")
+                installed.add(name)
+                print(f"Synced {agent}: {name} ({source_name})")
 
 
 def install_global_symlink(toolkit_root: Path, dry_run: bool) -> None:
