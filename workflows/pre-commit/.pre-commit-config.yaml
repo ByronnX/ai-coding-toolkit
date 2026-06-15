@@ -1,0 +1,23 @@
+repos:
+  - repo: local
+    hooks:
+      - id: lint
+        name: lint
+        entry: pnpm lint
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: type-check
+        name: type-check
+        entry: pnpm type-check
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: test
+        name: test
+        entry: pnpm test
+        language: system
+        pass_filenames: false
+        stages: [pre-push]

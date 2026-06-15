@@ -1,0 +1,26 @@
+{
+  "sources": [
+    {
+      "name": "awesome-codex-skills",
+      "repo": "https://github.com/ComposioHQ/awesome-codex-skills.git",
+      "local_clone": "../awesome-codex-skills-source",
+      "enabled": true,
+      "exclude_paths": ["composio-skills"],
+      "include_keywords": ["code", "review", "test", "debug", "plan", "migrate", "refactor", "ci", "pipeline", "sentry", "github", "git"]
+    },
+    {
+      "name": "awesome-agent-skills",
+      "repo": "https://github.com/VoltAgent/awesome-agent-skills.git",
+      "enabled": true,
+      "exclude_paths": [],
+      "include_keywords": ["code", "review", "test", "debug", "refactor", "performance", "security", "dev", "development", "bug", "tdd"]
+    },
+    {
+      "name": "ok-skills",
+      "repo": "https://github.com/mxyhi/ok-skills.git",
+      "enabled": true,
+      "exclude_paths": [],
+      "include_keywords": ["diagnose", "frontend", "browser", "code-review", "get-api-docs", "find-docs"]
+    }
+  ]
+}

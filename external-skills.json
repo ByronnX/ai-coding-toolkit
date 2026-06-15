@@ -1,0 +1,22 @@
+{
+  "skills": [
+    {
+      "name": "create-plan",
+      "repo": "https://github.com/ComposioHQ/awesome-codex-skills.git",
+      "path": "create-plan",
+      "agents": ["kimi", "codex", "claude"]
+    },
+    {
+      "name": "webapp-testing",
+      "repo": "https://github.com/ComposioHQ/awesome-codex-skills.git",
+      "path": "webapp-testing",
+      "agents": ["kimi", "codex", "claude"]
+    },
+    {
+      "name": "changelog-generator",
+      "repo": "https://github.com/ComposioHQ/awesome-codex-skills.git",
+      "path": "changelog-generator",
+      "agents": ["kimi", "codex", "claude"]
+    }
+  ]
+}

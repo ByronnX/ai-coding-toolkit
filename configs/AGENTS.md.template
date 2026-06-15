@@ -1,0 +1,46 @@
+# Agent 协作规范
+
+> 本文件由 [ai-coding-toolkit](https://github.com/<your-org>/ai-coding-toolkit) 初始化。  
+> 根据项目实际情况修改后提交到仓库根目录，供 Kimi / Codex / Claude 等 Agent 读取。
+
+## 项目基本信息
+
+- **项目名称**: <TODO>
+- **技术栈**: <TODO: e.g. TypeScript, React, Next.js, Node.js>
+- **包管理器**: <TODO: pnpm / npm / yarn>
+- **构建工具**: <TODO: Vite / Webpack / Turborepo>
+- **测试框架**: <TODO: Vitest / Jest / Playwright>
+
+## 目录结构约定
+
+```
+<TODO: 填写实际目录结构>
+```
+
+## 编码规范
+
+1. 禁止在业务代码中使用隐式 `any`。
+2. 修改前先检查内部共享包/组件库是否有可复用实现。
+3. 新功能必须补充测试，或在代码注释中说明不测试的理由。
+4. 不要提交 `console.log`、调试代码或临时注释。
+5. API 错误必须返回结构化错误信息，禁止直接抛原生异常给客户端。
+6. 敏感信息（密钥、token）必须走环境变量，禁止硬编码。
+
+## 代码风格
+
+- 使用 <TODO: ESLint / Prettier / Biome> 进行格式化。
+- 提交前必须运行 `<TODO: pnpm lint>` 和 `<TODO: pnpm test>`。
+- 使用 conventional commits 风格。
+
+## Agent 工作流
+
+1. **复杂任务先规划**: 输出 `plan.md` 或在本对话中给出执行计划，经确认后再写代码。
+2. **小步验证**: 每次改动后运行相关测试或类型检查。
+3. **审查清单**: 完成后主动对照代码审查 Skill 自检。
+4. **文档同步**: 修改公共 API、组件或配置时，同步更新相关文档。
+
+## 沟通规则
+
+- 用中文/英文回复（按用户语言）。
+- 每次修改后简要汇报：改了什么、为什么、风险点。
+- 遇到不确定的需求，优先提问而不是猜测。
